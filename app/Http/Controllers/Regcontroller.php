@@ -23,6 +23,6 @@ class Regcontroller extends Controller
             'password' => bcrypt($request->password), // secure hashing
         ]);
 
-        return redirect('/register')->with('success', 'Registration Successful!');
+        return redirect('/login')->with('success', 'Registration Successful!');
     }
 }

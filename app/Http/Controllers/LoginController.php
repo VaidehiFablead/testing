@@ -21,8 +21,10 @@ class LoginController extends Controller
 
         if ($user && Hash::check($request->password, $user->password)) {
             // Save user to session
+            Session::put('id', $user->id);
             Session::put('user', $user->name);
-            return redirect('/');
+            Session::put('email',$user->email);
+            return redirect('/profile');
         } else {
             return back()->with('error', 'Invalid email or password');
         }
