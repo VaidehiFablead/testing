@@ -29,7 +29,7 @@ Route::get('/form', function () {
 Route::get('/register', function () {
     return view('reg');
 });
-Route::get('/showForm', [Regcontroller::class, 'showForm'])->name('showForm');
+// Route::get('/showForm', [Regcontroller::class, 'showForm'])->name('showForm');
 Route::post('/register', [Regcontroller::class, 'register'])->name('register');
 
 
@@ -38,7 +38,7 @@ Route::post('/register', [Regcontroller::class, 'register'])->name('register');
 Route::get('/login', function () {
     return view('login');
 });
-Route::get('/login', [LoginController::class, 'showLogin'])->name('loginForm');
+// Route::get('/login', [LoginController::class, 'showLogin'])->name('loginForm');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::get('/', function () {
@@ -59,3 +59,9 @@ Route::get('/profile', [ProfileController::class, 'showProfile']);
 
 // update
 Route::post('/profile/update',[ProfileController::class,'updateProfile'])->name('profile.update');
+
+
+// display data on screen
+
+// Route::get('/users',[ProfileController::class,'allUsers'])->name('users.list');
+Route::get('/users', [ProfileController::class, 'allUsers'])->name('users.list');

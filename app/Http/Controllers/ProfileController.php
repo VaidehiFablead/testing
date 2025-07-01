@@ -17,6 +17,8 @@ class ProfileController extends Controller
         return view('profile', compact('name', 'email'));
     }
 
+
+    // updateProfiledate
     public function updateProfile(Request $request)
     {
         $user = Reg::where('email', Session::get('email'))->first();
@@ -27,10 +29,19 @@ class ProfileController extends Controller
             $user->save();
 
             Session::put('user', $user->name);
-             Session::put('email', $user->email);
+            Session::put('email', $user->email);
 
             return redirect('/profile')->with('status', 'profile updated succefully');
         }
         return back()->with('error', 'user not found');
+    }
+
+    // display all data
+
+    public function allUsers()
+    {
+        $users = Reg::all();
+        // return view('users', compact('users'));
+        return view('users', compact('users'));
     }
 }
