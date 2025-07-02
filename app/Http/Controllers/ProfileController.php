@@ -44,4 +44,14 @@ class ProfileController extends Controller
         // return view('users', compact('users'));
         return view('users', compact('users'));
     }
+
+    // delete data
+
+    public function deleteUser($id){
+        $user =Reg::find($id);
+        if($user){
+            $user->delete();
+        }
+        return redirect()->route('users.list')->with('status','deleted');
+    }
 }

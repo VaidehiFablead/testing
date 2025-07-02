@@ -14,7 +14,12 @@ class Regcontroller extends Controller
 
     public function register(Request $request)
     {
-        // You can add validation here if needed
+        // validation
+        $request->validate([
+            'name' => 'required|string|min:3',
+            'email' => 'required|email|unique:reg,email',
+            'password' => 'required|min:6',
+        ]);
 
         // Save data to database
         Reg::create([

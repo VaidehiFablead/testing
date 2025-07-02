@@ -36,11 +36,11 @@
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        {{-- <td>
-                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <td>
+                            {{-- <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">Edit</a> --}}
                             <a href="{{ route('users.delete', $user->id) }}" class="btn btn-danger btn-sm"
                                 onclick="return confirm('Are you sure to delete this user?')">Delete</a>
-                        </td> --}}
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

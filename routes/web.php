@@ -65,3 +65,24 @@ Route::post('/profile/update',[ProfileController::class,'updateProfile'])->name(
 
 // Route::get('/users',[ProfileController::class,'allUsers'])->name('users.list');
 Route::get('/users', [ProfileController::class, 'allUsers'])->name('users.list');
+
+
+
+// delete
+Route::get('/users.delete/{id}', [ProfileController::class, 'deleteUser'])->name('users.delete');
+
+
+
+
+// product 
+Route::get('/header', function () {
+    return view('header');
+});
+
+Route::get('/footer', function () {
+    return view('footer');
+});
+
+Route::get('/product', function () {
+    return view('product');
+});

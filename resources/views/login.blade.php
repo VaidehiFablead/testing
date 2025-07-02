@@ -21,7 +21,7 @@
 
                                     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
 
-                                    <form class="mx-1 mx-md-4"  method="POST">
+                                    <form class="mx-1 mx-md-4"  method="POST" id="loginForm">
                                         @csrf
 
                                         <div class="d-flex flex-row align-items-center mb-4">
@@ -72,6 +72,58 @@
 
     <!-- Optional Bootstrap JS (for dropdowns, modals, etc.) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
+            // Clear previous error messages
+            let errorElements = document.querySelectorAll(".text-danger");
+            errorElements.forEach(el => el.remove());
+
+            let isValid = true;
+
+            // Get form fields
+            const email = document.getElementById("email");
+            const password = document.getElementById("password");
+            const check = document.getElementById("check");
+
+            // Helper function to show error
+            function showError(input, message) {
+                isValid = false;
+                const error = document.createElement("div");
+                error.className = "text-danger";
+                error.innerText = message;
+                input.parentNode.appendChild(error);
+            }
+
+            
+
+            // Email validation
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (email.value.trim() === "") {
+                showError(email, "Please enter your email");
+            } else if (!email.value.match(emailPattern)) {
+                showError(email, "Enter a valid email address");
+            }
+
+            // Password validation
+            if (password.value.trim() === "") {
+                showError(password, "Please enter your password");
+            } else if (password.value.length < 6) {
+                showError(password, "Password must be at least 6 characters");
+            }
+
+            // Checkbox validation
+            if (!check.checked) {
+                showError(check, "You must agree to the terms");
+            }
+
+            // Prevent form submission if invalid
+            if (!isValid) {
+                e.preventDefault();
+            }
+        });
+    </script>
+
 </body>
 
 </html>
