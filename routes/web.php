@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Regcontroller;
 use Illuminate\Support\Facades\Route;
@@ -86,3 +87,10 @@ Route::get('/footer', function () {
 Route::get('/product', function () {
     return view('product');
 });
+
+// add in database
+Route::post('/product', [ProductController::class, 'store'])->name('product.store');
+Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+
+// display product
+Route::get('/productView', [ProductController::class, 'index'])->name('product.index');
